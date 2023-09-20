@@ -1,4 +1,4 @@
-# Frontend App for irisk
+# Frontend App for Rammona
 
 ## How to run
 1. open console in `front-app` directory
@@ -11,7 +11,5 @@
 
 1. pinia
 2. cookie
-3. i18n
 4. vueuse
 5. theme
-6. vue-toast-notification@^3.0
