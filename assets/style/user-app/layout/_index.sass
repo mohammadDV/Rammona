@@ -1,0 +1,91 @@
+.app-navbar
+    @include sm
+        max-width: 1140px
+        margin: 0 auto
+    &__logo
+        display: flex
+        justify-content: space-between
+        padding: 1.5em
+        img
+            width: 100px
+
+    &__nav
+        ul
+            display: flex
+            align-items: center
+            position: relative
+            gap: 10px
+            @include sm
+                justify-content: space-around
+            li
+                padding: 10px 0
+                position: relative
+                &::after
+                    content: ''
+                    right: 0
+                    position: absolute
+                    bottom: 0
+                    width: 0
+                    background: $secondary
+                    height: 5px
+                    transition: width 0.3s
+                    border-radius: 13px
+                &:hover,.active
+                    &::after
+                        width: 100%
+                &.active
+                    &::after
+                        width: 100%
+                .button
+                    padding: 1rem 0.625rem
+                    text-align: left
+                    font-size: 0.84375rem
+                    font-weight: 600
+                    text-transform: uppercase
+                    white-space: normal
+                    text-align: center
+                    position: relative
+                    @include sm
+                        font-size: 0.7rem
+                        white-space: nowrap
+
+footer
+
+    background: #ddd
+    .app-footer
+        &__logo
+            display: grid
+            grid-template-columns: repeat(3,1fr)
+            padding: 2.5em
+            @include sm
+                grid-template-columns: 1fr
+        &__socials
+            display: flex
+            gap: 10px
+            a
+                background: none
+                padding: 0
+                border: none
+        &__copywrite
+            direction: ltr
+            background: #413f3f
+            color: white
+            padding: 10px
+            font-size: 0.8rem
+    .button
+        border: none
+        color: var(--secondary)
+        width: fit-content !important
+        height: 45px
+        &::after
+            content: ''
+            width: 0
+            height: 1px
+            position: absolute
+            background: $primary
+            top: 100%
+            transition: width 0.5s
+        &:hover
+            border-color: transparent
+            &::after
+                width: 100%

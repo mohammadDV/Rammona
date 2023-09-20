@@ -1,0 +1,23 @@
+.tooltip
+    $background: #646464
+    position: relative
+    user-select: none
+    &__title
+        cursor: pointer
+    &__body
+        top: -150%
+        position: absolute
+        padding: 3px 5px
+        border-radius: 4px
+        background: $background
+        color: white
+        z-index: 10
+        &::after
+            content: " "
+            position: absolute
+            top: 100%
+            right: 10%
+            margin-left: -5px
+            border-width: 5px
+            border-style: solid
+            border-color: $background transparent transparent transparent

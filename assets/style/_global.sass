@@ -1,0 +1,453 @@
+@use "sass:map"
+// functions
+@function set-text-color($color)
+    @if (lightness($color) > 40%)
+        @return #000
+    @else
+        @return #fff
+
+// mixins
+@mixin fontWeight($weight)
+    font-weight: map-get($font-weights, $weight)
+
+@mixin fontSize($size)
+    font-size: map-get( $font-size, $size)
+
+@mixin flexCenter($direction: row)
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: $direction
+
+// responsive
+@mixin xs
+    @media (max-width: $xs)
+        @content
+
+@mixin sm
+    @media (max-width: $sm)
+        @content
+
+@mixin not-sm
+    @media (min-width: $sm)
+        @content
+
+@mixin tablet
+    @media (min-width: $sm)
+        @content
+
+@mixin smHeigth
+    @media (max-height: 670px)
+        @content
+// typography
+.line-through
+    text-decoration: line-through
+.no-wrap
+    white-space: nowrap
+.capitalized
+    text-transform: capitalize
+.uppercase
+    text-transform: uppercase
+.text-color
+    color: var(--text-color) !important
+.is-seconday
+    background: $secondary
+.has-bg-card
+    background-color: var(--card)
+.has-bg-background
+    background-color: var(--background)
+.is-card
+    background: var(--card) !important
+.is-background
+    background: var(--background) !important
+.is-text-seconday
+    color: $secondary
+.is-rtl
+    .has-text-align-auto
+        text-align: right !important
+.is-ltr
+    .has-text-align-auto
+        text-align: left !important
+.placeholder-sm
+    input::placeholder
+        font-size: small
+// font sizes
+@each $s in $font-sizes-list
+    .font-#{$s}
+        @include fontSize($s)
+
+@media (min-width: $sm)
+    @each $s in $font-sizes-list
+        .font-sm-#{$s}
+            @include fontSize($s)
+
+@media (min-width: $md)
+    @each $s in $font-sizes-list
+        .font-md-#{$s}
+            @include fontSize($s)
+@for $i from 1 through 20
+    .font-#{$i}
+        font-size: #{$i}px !important
+// font weights
+@each $w in $font-weight-list
+    .font-#{$w}
+        @include fontWeight($w)
+// positions
+@each $p in $positions
+    .#{$p}-0
+        #{$p}: 0 !important
+@each $p in $positions
+    .#{$p}-1em
+        #{$p}: 1em !important
+@each $var in $position
+    .position-#{$var}
+        position: $var !important
+
+// headers
+h1
+    @include fontSize(xl)
+    @include sm
+        @include fontSize(md)
+    @include tablet
+        @include fontSize(lg)
+h2
+    @include fontSize(lg)
+    @include sm
+        @include fontSize(md)
+    @include tablet
+        @include fontSize(lg)
+// border
+.rounded-r-0
+    border-radius: $borderRadius 0 0 $borderRadius
+//
+.opacity-0
+    opacity: 0
+
+.opacity-50
+    opacity: 0.5
+
+// size
+.w-100
+    width: 100%
+.w-inherit
+    width: inherit
+.h-100
+    height: 100% !important
+.h-100vh
+    height: 100vh
+// elements
+iframe
+    border: none
+
+a
+    text-decoration: none
+    color: var(--text-color)
+//
+.z-index-1
+    z-index: 1 !important
+//
+.overflow-md-hidden
+    @include not-sm
+        overflow: hidden
+.overflow-hidden
+    overflow: hidden
+.overflow-y-hidden
+    overflow-y: hidden
+.overflow-x-hidden
+    overflow-x: hidden
+// select
+.no-select-mobile
+    @include sm
+        user-select: none !important
+.no-select
+    user-select: none !important
+// transition
+@mixin transition-all
+    transition: all 0.5s ease-in-out
+
+.transition-all
+    transition: all 0.7s ease-in-out
+
+.transition-all-normal
+    transition: all 0.3s ease-in-out
+
+@mixin transition($name, $extra:null)
+    @if $extra
+        transition: $name 0.25s linear, $extra
+    @else
+        transition: $name 0.25s linear
+
+// animations
+.fade-in
+    animation: fadeIn 0.4s ease-in-out both
+
+@keyframes fadeIn
+    from
+        opacity: 0
+    to
+        opacity: 1
+
+// display
+.d-desktop-none
+    @include not-sm
+        display: none !important
+.d-mobile-none
+    @include sm
+        display: none !important
+.d-desktop-block
+    @include not-sm
+        display: block !important
+.d-mobile-block
+    @include sm
+        display: block !important
+
+// locale
+@mixin is_rtl()
+    .is-rtl
+        @content
+
+@mixin is_ltr()
+    .is-ltr
+        @content
+// border radius
+@mixin borderRadius()
+    border-radius: 8px
+
+.is-rounded
+    border-radius: $borderRadius !important
+.is-rounded-circle
+    border-radius: 50%
+
+.is-rounded-r-0
+    border-radius: $borderRadius 0 0 $borderRadius !important
+
+.is-rounded-b-0
+    border-radius: $borderRadius $borderRadius 0 0 !important
+
+.is-rounded-t-0
+    border-radius: 0 0 $borderRadius $borderRadius !important
+
+.is-rounded-l-0
+    border-radius: 0 $borderRadius $borderRadius 0 !important
+
+.is-rounded-t
+    border-radius: $borderRadius $borderRadius 0 0 !important
+// cursor
+.is-cursor-progress
+    cursor: progress
+.is-cursor-auto
+    cursor: auto !important
+.is-cursor-pointer
+    cursor: pointer
+.is-cursor-help
+    cursor: help
+// direction
+.is-rtl
+    .dir-auto
+        direction: rtl
+.is-ltr
+    .dir-auto
+        direction: ltr
+// space
+$po: ("b": bottom, "t":top, "l":left, "r":right)
+
+@each $var in (b,t,l,r)
+    $pvar: map.get($po, $var)
+    .m#{$var}-gap
+        margin-#{$pvar}: $gap
+
+.mx-gap
+    margin: 0 $gap
+.my-gap
+    margin: $gap 0
+.m-gap
+    margin: $gap 0
+
+@each $var in (b,t,l,r)
+    $pvar: map.get($po, $var)
+    .p#{$var}-gap
+        padding-#{$pvar}: $gap
+
+.px-gap
+    padding: 0 $gap
+.py-gap
+    padding: $gap 0
+.p-gap
+    padding: $gap
+
+    // negative
+@each $var in $spacing
+    $index: index($spacing, $var)
+
+    .mr-n#{$index + 1}
+        margin-right: -1 * $var !important
+
+    .ml-n#{$index + 1}
+        margin-left: -1 * $var !important
+
+    .mb-n#{$index + 1}
+        margin-bottom: -1 * $var !important
+
+    .mt-n#{$index + 1}
+        margin-top: -1 * $var !important
+
+// 
+.is-grid
+    display: grid
+.d-grid-1-2
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: $gap
+.d-grid-1-3
+    display: grid
+    grid-template-columns: auto 200px
+    gap: $gap
+
+.is-grid-1-4
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))
+    gap: $gap
+.is-grid-1-4-mobile-1-2
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+    gap: $gap
+
+.is-grid-title-text
+    display: grid
+    grid-template-columns: 100px 1fr
+    gap: $gap
+    align-items: center
+.is-grid-title-text-50px
+    display: grid
+    grid-template-columns: 50px 1fr
+    gap: $gap
+    align-items: center
+// box-shadow
+.shadow-0
+    box-shadow: none !important
+.shadow-1
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%)
+//
+.overflow-y-auto
+    overflow-y: auto
+
+.overflow-auto
+    overflow: auto
+
+.overflow-hidden
+    overflow: hidden
+
+.overflow-y-hidden
+    overflow-y: hidden
+
+.overflow-x-hidden
+    overflow-x: hidden
+// scrollbar
+::-webkit-scrollbar
+    width: 3px
+    height: 3px
+    background-color: rgba($scrollbarColor, 0.1)
+::-webkit-scrollbar-thumb
+    border-radius: 8px
+    background-color: $scrollbarColor
+    -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%)
+::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%)
+    border-radius: 10px
+    background-color: transparent
+.is-narrow-scrollbar
+    &::-webkit-scrollbar
+        width: 3px
+        height: 3px
+        background-color: rgba($scrollbarColor, 0.1)
+    &::-webkit-scrollbar-thumb
+        border-radius: 8px
+        background-color: $scrollbarColor
+        -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%)
+    &::-webkit-scrollbar-track
+        -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%)
+        border-radius: 10px
+        background-color: transparent
+//
+.scroll-slider
+    display: flex
+    overflow-x: auto
+    overflow-y: hidden
+    scroll-snap-type: x mandatory
+    padding: 10px
+    gap: 12px
+    scroll-padding: 10px
+    @extend .is-narrow-scrollbar
+    .item
+        position: relative
+        flex: 0 0 100%
+        scroll-snap-align: start
+        scroll-snap-stop: always
+        display: flex
+        justify-content: center
+        align-items: center
+//
+.is-center
+    display: grid !important
+    place-items: center !important
+.gap
+    gap: $gap
+// svg animation
+.svg-animation path
+    stroke-dasharray: 1000
+    stroke-dashoffset: 1000
+    animation: dash 10s linear both
+
+@keyframes dash
+    to
+        stroke-dashoffset: 0
+
+// line-height
+@for $i from 25 through 35
+    .line-height-#{$i}
+        line-height: #{$i}px !important
+
+// title
+span[aria-label]
+    position: relative
+    cursor: help
+    &::after
+        opacity: 0
+        content: attr(aria-label)
+        position: absolute
+        top: 103%
+        left: 0
+        background: #302c2cf0
+        padding: 5px
+        border-radius: 0.25rem
+        white-space: nowrap
+        transition: all 0.5s
+        color: white
+    &:hover
+        &::after
+            opacity: 1
+// dates
+
+.date
+    direction: ltr !important
+    white-space: nowrap
+    &:lang(fa)
+        text-align: right
+
+// put dot before
+.dot-before
+    &:lang(fa)
+        &::before
+            margin: 0 0 0 5px
+    &::before
+        display: inline-block
+        content: ""
+        position: relative
+        width: 7px
+        height: 7px
+        background: $primary
+        border-radius: 50%
+        margin: 0 5px 0 0
+    &.dot-before__dark
+        &::before
+            background: #4d4d4d

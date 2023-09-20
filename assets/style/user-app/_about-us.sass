@@ -1,0 +1,70 @@
+.about-us
+    &__content
+        .container
+            padding-top: 5em
+            padding-bottom: 5em
+            h2
+                @extend %app-title
+            p
+                color: var(--text-color)
+                line-height: 40px
+
+    &__clients
+        background: #e9e6e6
+
+        .container
+            padding: 3em
+            display: grid
+            grid-template-columns: repeat(4,1fr)
+            gap: 3em
+            @include sm
+                grid-template-columns: repeat(3,1fr)
+            @include xs
+                grid-template-columns: repeat(2,1fr)
+            > *
+                height: fit-content
+    &__summary
+        .slider
+            position: relative
+            .line
+                width: 100%
+                position: absolute
+                top: 8px
+                border-top: 4px solid var(--secondary)
+            .swiper
+                padding: 3em 0
+                .slide
+                    &::before
+                        content: ''
+                        position: absolute
+                        top: -3em
+                        background: var(--secondary)
+                        width: 20px
+                        height: 20px
+                        border-radius: 50%
+                    &__card
+                        margin-top: 20px
+                        position: relative
+                        background: var(--primary)
+                        padding: 1em
+                        border-radius: 0px 10px 10px 10px
+                        .content
+                            font-size: 1rem
+                            padding: 0 5px 2rem
+                        .date
+                            font-size: 1.5rem
+                            margin: 2rem 0
+                            text-align: center
+
+                        &::before
+                            border-color: var(--secondary) transparent var(--secondary) transparent
+                            content: " "
+                            display: block
+                            width: 0
+                            height: 0
+                            border-style: solid
+                            border-width: 50px 50px 0 0
+                            position: absolute
+                            top: -5px
+                            left: -5px
+                            transition: .8s all ease-in-out

@@ -1,0 +1,76 @@
+$tagsRadius: 4px
+// navbar
+.navbar
+    flex-direction: row-reverse
+    @include mobile
+        direction: rtl
+    .navbar-menu
+        flex-direction: row-reverse
+        .navbar-start
+            margin-left: auto
+            margin-right: unset !important
+        .navbar-end
+            margin-right: auto
+            margin-left: unset !important
+
+    .navbar-burger
+        margin-left: unset !important
+        margin-right: auto
+
+// buttons
+.button
+    direction: rtl
+    &.is-responsive
+        font-size: 0.85rem
+        &.is-normal
+            font-size: 0.85rem
+    &.is-loading
+        cursor: progress !important
+    &.is-warning
+        color: rgba(0, 0, 0, 0.6)
+
+        &.is-inverted
+            color: $warning
+    &.is-primary
+        &.is-loading
+            &::after
+                border-color: transparent transparent white white !important
+    &.is-success
+        &.is-loading
+            &::after
+                border-color: transparent transparent white white !important
+    &.is-danger
+        &.is-loading
+            &::after
+                border-color: transparent transparent white white !important
+
+    .icon
+        margin-left: 0 !important
+        margin-right: 0 !important
+
+// tables
+.table
+    tr
+        th
+            text-align: right
+
+// alert or messages
+.message-body
+    border-width: 0 4px 0 0 !important
+
+// tag
+.tags
+    &.has-addons
+        .tag:not(:last-child)
+            border-top-right-radius: $tagsRadius
+            border-top-left-radius: 0
+            border-bottom-right-radius: $tagsRadius
+            border-bottom-left-radius: 0
+
+        .tag:not(:first-child)
+            margin-left: unset
+            margin-right: 0
+            border-top-left-radius: $tagsRadius
+            border-top-right-radius: 0
+            border-bottom-left-radius: $tagsRadius
+            border-bottom-right-radius: 0

@@ -1,0 +1,18 @@
+.vpd-main
+    .vpd-input-group
+        height: $inputHeight
+        .vpd-icon-btn
+            border-radius: 0 $borderRadius $borderRadius 0
+            svg
+                fill: #4949497c
+        input
+            border-radius: $borderRadius 0 0 $borderRadius
+            background: var(--background)
+            border: none
+            &::placeholder
+                font-size: var(--placeholder-size)
+                color: var(--placeholder) !important
+                padding: 0 8px
+
+        label
+            display: none

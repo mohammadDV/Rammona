@@ -1,0 +1,43 @@
+$borderRadius: 0.25rem
+$mobile: 800px
+@mixin mobile
+    @media (max-width: $mobile)
+        @content
+@mixin swiperToolsStyle($color)
+    .swiper-button-next:after, .swiper-button-prev:after
+        font-size: 20px
+        color: var(--text-color)
+        background: rgba(#fff, 0.533)
+        width: 30px
+        height: 30px
+        display: flex
+        align-items: center
+        justify-content: center
+    .swiper-button-prev, .swiper-rtl .swiper-button-next,.swiper-button-prev
+        &::after
+            border-radius: 50%
+    .swiper-pagination
+        position: absolute
+        bottom: 0
+        padding: 3px
+        display: flex !important
+        justify-content: center
+        .swiper-pagination-bullet
+            width: 11px
+            height: 11px
+            display: block
+            border-radius: 10px
+            background: $color
+            opacity: 0.4
+            transition: all .3s
+            &-active
+                opacity: 1
+                background: var(--txt-color) !important
+                width: 30px
+                box-shadow: 0px 0px 20px rgba($color, 0.3)
+                @include mobile
+                    height: 11px
+                    width: 30px
+
+.theme-light
+    @include swiperToolsStyle(#000)

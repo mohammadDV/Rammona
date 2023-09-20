@@ -1,0 +1,21 @@
+.layout
+    position: relative
+    main
+        @include transition(padding)
+        @include mobile
+            padding: 0 !important
+
+@include is-rtl
+    .layout
+        main
+            padding-right: $sidebar-width
+        &.mini-sidebar
+            main
+                padding-right: $sidebar-width-mini
+@include is-ltr
+    .layout
+        main
+            padding-left: $sidebar-width
+        &.mini-sidebar
+            main
+                padding-left: $sidebar-width-mini

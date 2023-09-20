@@ -1,0 +1,45 @@
+.project-list
+    .project-table
+        overflow-x: auto
+    .product-filter
+        display: flex
+        flex-wrap: wrap
+        gap: $gap
+        .action
+            display: flex
+            gap: $gap
+            @include xs
+                width: 100%
+        .autocomplete
+            @include xs
+                width: 150px
+    .projects-section-line
+        margin-bottom: $gap
+        .projects-status
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            gap: $gap
+            .item-status
+                height: 100px
+                color: white
+                border-radius: 5px
+                padding: 5px 10px
+                font-size: 0.8rem
+                font-weight: bold
+                display: grid
+                place-items: center
+                background: var(--warning)
+                &:nth-child(2)
+                    background: var(--success)
+                &:nth-child(3)
+                    background: var(--primary)
+                @include xs
+                    font-size: 10px
+                    text-align: center
+                .status-number
+                    font-size: 2rem
+.project-create
+    .form
+        .grid-1-2
+            @include sm
+                grid-template-columns: 1fr

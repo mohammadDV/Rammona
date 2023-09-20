@@ -1,0 +1,38 @@
+$tdMinWidth: 60px
+$sm: 960px
+.border-y
+    border-width: 1px 0 1px 0
+    border-style: solid
+    border-color: #dddddd4d
+
+.empty-table
+    color: var(--text-color)
+    &__header
+        font-size: small
+        display: flex
+        justify-content: space-around
+        @media (max-width: $sm)
+            font-size: x-small
+    &__body
+        display: flex
+        justify-content: center
+        align-items: center
+
+.table
+    color: var(--text-color)
+    background: transparent
+    .fixed-header
+        position: sticky
+        top: 0
+        background: var(--card)
+        z-index: 1
+    thead
+        tr
+            th
+                color: var(--text-color)
+                border-color: rgba(var(--text-color-rgb),0.5)
+    tbody
+        tr
+            td
+                min-width: $tdMinWidth !important
+                border-color: rgba(var(--text-color-rgb),0.1)

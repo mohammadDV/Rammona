@@ -1,0 +1,77 @@
+$inputBackground: var(--input)
+$inputHeight: 100%
+$error: #ff5252
+$success: #02c076
+$responsive: 670px
+$gap: 15px
+%absolute-center
+    position: absolute
+    bottom: 0
+    top: 0
+    display: flex
+    align-items: center
+.double-datepicker-inputs
+    display: flex
+    gap: $gap
+    cursor: pointer
+    .input
+        &.readonly
+            opacity: 1 !important
+    input
+        cursor: pointer
+        opacity: 1 !important
+        &[readonly]
+            opacity: 1 !important
+
+    &__close_btn
+        background-color: transparent
+        border: none
+        @extend %absolute-center
+        left: 0
+        z-index: 10
+        cursor: pointer
+        svg
+            width: 15px
+            height: 15px
+.double-datepicker-dialog
+    display: grid
+    gap: 0
+    overflow-y: auto
+    overflow-x: hidden
+    position: relative
+    @media (min-width: $responsive)
+        grid-template-columns: 1fr 1fr
+        .double-datepicker-dialog_action
+            display: none
+    &_box
+        border-left: 1px solid #dddddd6c
+        p
+            padding: 10px
+            opacity: 0.7
+            display: flex
+            gap: 5px
+            font-size: 13px
+    &_date
+        margin-bottom: 10px
+    &_action
+        padding: 10px
+        border-top: 1px solid #dddddd47
+        text-align: center
+    @media (max-width: $responsive)
+        &_box
+            &.end-date
+                display: none
+        &.show-end-date
+            .double-datepicker-dialog_box.start-date
+                display: none
+            .double-datepicker-dialog_box.end-date
+                display: block
+
+    .vpd-input-group,.vpd-actions
+        display: none
+    .vpd-is-inline
+        transition: all 0.3s
+    .deactive
+        .vpd-is-inline
+            opacity: 0.5
+            pointer-events: none

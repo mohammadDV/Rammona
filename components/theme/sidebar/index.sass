@@ -1,0 +1,142 @@
+
+@import '../../../assets/style/variables'
+$menu-btn-size: 145px
+.sidebar
+    background-color: var(--card)
+    width: var(--sidebar-width)
+    z-index: 10000 !important
+    top: 0
+    bottom: 0
+    z-index: var(--vp-z-index-sidebar)
+    max-width: 320px
+    overflow-x: hidden
+    overflow-y: auto
+    position: fixed
+    transition: width 0.4s, text-align 0.5s linear
+    &-logo
+        padding: 0 !important
+        margin-left: 0 !important
+        margin-right: 0 !important
+        img
+            width: 100px !important
+
+    .sidebar_btn
+        width: 90%
+        margin: 0 auto
+        display: block
+        text-align: right
+        font-size: 14px !important
+        height: 50px
+        border-radius: 0
+        transition: background-color 0.25s
+        border-radius: 5px
+        .menu-title
+            font-size: 14px
+        .icon,svg
+            color: inherit !important
+        // &.is-active 
+        //     background: rgba(var(--primary-rgb),0.2)
+        //     color: darken($primary,20 )
+        &:not(.is-active)
+            .sidebar_btn__title,.icon,.menu-title
+                color: var(--text-color) !important
+    .tag
+        color: white !important
+        background: darken($error, 0.1) !important
+        border-radius: 50%
+        font-size: 10px
+        position: absolute
+        width: 20px
+        height: 20px
+        left: 2em
+    .menu__ul
+        display: grid !important
+        margin: 10px 0
+        li
+            border-right: 1px solid #ddd
+            margin-right: 2*$gap
+            padding-right: 10px
+            width: 100%
+            .sidebar_btn
+                white-space: break-spaces
+                padding: 10px
+                width: $menu-btn-size
+                margin: 0
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                .tag
+                    left: 0.5em
+@media (min-width: $sm)
+    .mini-sidebar
+        .sidebar
+            width: var(--sidebar-mini-width)
+            text-align: center
+            img
+                object-fit: cover
+                width: 46px !important
+                height: 40px
+                object-position: 100% 0
+
+            .tag
+                transform: translate(48%, -13px)
+            &_btn
+                &.menu-btn
+                    .down-icon
+                        position: absolute
+                        left: -15px
+                &_child
+                    overflow-x: auto
+                &__group, .is-flex
+                    justify-content: center
+                    transform: translateY(-5px)
+                    .icon
+                        margin: 0 !important
+            &_btn__title,.menu-title
+                margin: 0
+                position: absolute
+                font-size: x-small
+                transform: translateY(20px) translateX(0px)
+                transition: font-size 0.25s, transform 0.25s
+
+            .menu__ul
+                li
+                    padding-right: 0
+                    margin-right: 0
+                    border-right: unset
+                    .button
+                        position: unset
+                        justify-content: center
+                        text-align: center
+                        width: 90%
+                        font-size: x-small !important
+                        overflow: hidden
+                        margin: 0 auto
+                        .tag
+                            left: 0
+                            margin-bottom: 6%
+
+:lang(fa)
+    .sidebar
+        direction: rtl
+        right: 0
+
+@media (max-width: $sm)
+    .overlay
+        background: rgba($bg, 0.5)
+        position: fixed
+        top: 0
+        right: 0
+        left: 0
+        bottom: 0
+        z-index: 100
+    .sidebar
+        transform: translateX(100%)
+        transition-delay: 0.5s
+        transition: transform 0.5s ease-in-out
+        .sidebar_btn__title,.menu-title, .sidebar_btn
+            font-size: 13px !important
+        &.is-open
+            width: var(--sidebar-width)
+            transform: translateX(0)
+            // z-index: 100000

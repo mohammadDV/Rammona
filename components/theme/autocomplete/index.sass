@@ -1,0 +1,196 @@
+$shadow: var(--shadow)
+$txtColor: var(--text-color)
+$autoBg: var(--background)
+$error: var(--error)
+$borderRadius: 4px
+$inputHeight: 40px
+$fontSize: 0.87rem
+
+%inputPrefix
+    font-size: x-small
+    display: flex
+    align-items: center
+    white-space: nowrap!important
+
+%inputErrorMessage
+    position: absolute
+    color: $error
+    margin-top: calc($inputHeight + 2px)
+    font-size: 10px
+
+.v-locale--is-ltr
+    .autocomplete
+        .autocomplete_input
+            &_icon
+                right: 0.5em
+                left: unset
+            .autocomplete__close_btn
+                right: 2.3em
+                left: unset
+
+/// animation
+.autocomplete-fade-enter-active
+    animation: smooth-fade 0.3s
+.autocomplete-fade-leave-active
+    opacity: 0
+/// styles
+%absolute-center
+    position: absolute
+    bottom: 0
+    top: 0
+    display: flex
+    align-items: center
+
+.autocomplete
+    position: relative
+    &.readonly
+        opacity: 0.5
+        input
+            cursor: default
+    .autocomplete_input
+        display: flex
+        align-content: center
+        border-radius: $borderRadius
+        background-color: $autoBg
+        width: 100%
+        height: $inputHeight
+        padding: 0 8px
+        &_icon
+            fill: $txtColor
+            position: absolute
+            left: 0.5em
+            top: 0
+            bottom: 0
+            display: flex
+            align-items: center
+            svg
+                transition: all 0.5s
+                transform-origin: 50% 65%
+            &:not(.open) svg
+                transform: rotate(180deg)
+
+        .autocomplete__prefix
+            @extend %inputPrefix
+
+        input
+            color: $txtColor
+            cursor: pointer
+            padding: 0 10px
+            background: transparent
+            border: none
+            box-shadow: none
+            font-size: $fontSize
+            &::placeholder
+                color: var(--placeholder)
+                font-size: var(--placeholder-size)
+
+            &:focus + label,
+            &.input__dirty + label
+                transform: translateY(-30px)
+                font-size: 10px
+
+        label
+            position: absolute
+            border: 0
+            top: 0
+            bottom: 0
+            z-index: 2
+            display: flex
+            align-items: center
+            padding: 0 10px
+            box-sizing: border-box
+            transition: all 0.3s linear
+            cursor: text
+            opacity: 0.7
+            font-size: small
+            &:lang(fa)
+                right: 0
+            &:lang(en)
+                left: 0
+
+        .autocomplete__close_btn
+            background-color: transparent
+            border: none
+            @extend %absolute-center
+            left: 2.3em
+            z-index: 1
+            cursor: pointer
+            svg
+                width: 15px
+                height: 15px
+
+        .error-message
+            @extend %inputErrorMessage
+
+        .loading-container
+            $time: 2s
+            $size: 3px
+            position: absolute
+            overflow: hidden
+            width: 100%
+            height: 100%
+            top: calc($inputHeight / 2)
+            left: 0
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            z-index: 100000
+
+            .loader__element
+                height: $size
+                width: 100%
+                background: $autoBg
+                &:before
+                    content: ''
+                    display: block
+                    background-color: var(--secondary)
+                    height: $size
+                    animation: getWidth $time ease-in infinite
+    &__menu
+        position: absolute
+        z-index: 1000
+        right: 0em
+        margin: 4px
+        // margin-top: $inputHeight
+        width: 100%
+        border: 1px solid #2e2c2c25
+        border-radius: $borderRadius
+        &_multi
+            li
+                display: flex
+                align-items: center
+                gap: 10px
+        ul
+            background: $autoBg
+            width: 100%
+            box-shadow: 0 0 2px $shadow
+            border-radius: $borderRadius
+            font-size: $fontSize
+            &::-webkit-scrollbar-track
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important
+                border-radius: 10px !important
+                background-color: transparent
+
+            & ::-webkit-scrollbar,
+            &::-webkit-scrollbar
+                width: 4px !important
+                height: 8px !important
+                background-color: transparent
+
+            &::-webkit-scrollbar-thumb
+                border-radius: 8px !important
+                background-color: var(--scrollbar-color) !important
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important
+            li
+                list-style: none
+                white-space: nowrap !important
+                cursor: pointer
+                padding: 10px
+                &:not(:first-child)
+                    border-top: 1px solid $shadow
+
+@keyframes getWidth
+    from
+        transform: translateX(-100%)
+    to
+        transform: translateX(100%)

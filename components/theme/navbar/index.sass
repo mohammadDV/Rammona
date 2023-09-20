@@ -1,0 +1,29 @@
+@import '../../../assets/style/variables'
+.navbar
+    position: sticky
+    top: 0
+    @media (max-width: $sm)
+        height: 70px
+
+    .navbar-brand
+        justify-content: end
+        @media (max-width: $sm)
+            display: none
+
+    .image-placeholder
+        width: 40px
+        height: 40px
+        background: var(--background)
+        border-radius: 50%
+        border: 2px solid var(--secondary)
+        display: flex
+        align-items: flex-end
+        justify-content: center
+        position: relative
+        .icon
+            margin-bottom: -1px
+    .navbar-burger
+        position: absolute
+        inset: 0
+        @media (max-width: $sm)
+            margin-top: 10px

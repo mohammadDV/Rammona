@@ -1,0 +1,59 @@
+.project-scenario
+    .senario-action
+        .button
+            @include sm
+                width: 100%
+
+    .senario-form
+        .form
+            display: flex
+            @include sm
+                display: grid
+                grid-template-columns: repeat(2, 1fr)
+    .scenario-list
+        display: grid
+        gap: 5px
+        font-size: 10px
+        &__action
+            display: flex
+            gap: $gap
+            @include xs
+                display: block
+                .button
+                    margin: 3px
+
+    .autocomplete
+        .autocomplete_input label
+            font-size: 10px
+        .autocomplete__menu
+            li
+                font-size: 10px !important
+
+.risk-profile
+    .senario-form
+        .form
+            display: flex
+            @include sm
+                display: grid
+                grid-template-columns: repeat(2, 1fr)
+    .charts
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        gap: 10px
+        @include sm
+            grid-template-columns: 1fr
+
+    .autocomplete
+        .autocomplete_input label
+            font-size: 10px
+        .autocomplete__menu
+            li
+                font-size: 10px !important
+
+.edit-pie-chart
+    display: grid
+    grid-template-columns: repeat(5, 1fr)
+    align-items: center
+    gap: 10px
+    @include xs
+        grid-template-columns: repeat(2, 1fr)

@@ -1,0 +1,101 @@
+$inputBackground: var(--input)
+$inputHeight: 40px
+$error: #ff5252
+$success: #02c076
+%inputPrefix
+    font-size: x-small
+    display: flex
+    align-items: center
+    white-space: nowrap!important
+
+%inputErrorMessage
+    position: absolute
+    color: $error
+    top: calc($inputHeight + 2px)
+    font-size: 10px
+
+.input,.textarea
+    background-color: $inputBackground
+    border-radius: 2px
+    height: $inputHeight
+    display: flex
+    align-content: center
+    justify-content: space-between
+    width: 100%
+    max-width: 100%
+    border: 0
+    position: relative
+    font-size: 17px
+    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,box-shadow 0.1s ease-in-out
+    &.readonly
+        opacity: 0.5
+        input
+            cursor: default
+    .input__prefix
+        @extend %inputPrefix
+    textarea
+        min-height: 100px
+    input,textarea
+        color: var(--text-color)
+        background-color: transparent
+        position: relative
+        border: 0
+        box-shadow: none
+        top: 0
+        line-height: 20px
+        width: 100% !important
+        height: 100% !important
+        box-sizing: border-box
+        z-index: 3
+        display: block
+        font-size: 15px
+        transition: top 0.1s ease-in-out
+        line-height: normal !important
+        &::placeholder
+            color: var(--placeholder)
+            font-size: var(--placeholder-size)
+
+        &:focus-visible
+            outline: 0px !important
+
+        &:-webkit-direct-focus
+            outline: 0px !important
+
+        &:-webkit-autofill
+            -webkit-box-shadow: 0 0 0 50px $inputBackground inset
+            -webkit-text-fill-color: var(--text-color)
+
+        &:focus + label,
+        &.input__dirty + label
+            transform: translateY(-30px)
+            font-size: 10px
+            // opacity: 0.7
+
+    .error-message
+        @extend %inputErrorMessage
+        top: 100%
+
+    label
+        position: absolute
+        border: 0
+        top: $inputHeight * 0.25
+        z-index: 2
+        padding: 0 10px
+        box-sizing: border-box
+        transition: all 0.2s ease-in-out
+        cursor: text
+        opacity: 0.7
+        font-size: small
+        &:lang(fa)
+            right: 0
+        &:lang(en)
+            left: 0
+
+.captcha-input
+    display: grid
+    grid-template-columns: 1fr 20px 100px
+    gap: 5px
+    align-items: center
+    position: relative
+    .icon
+        cursor: pointer
