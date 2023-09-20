@@ -5,7 +5,8 @@ import { CommentModel} from "~~/types";
 interface CommentForm {
     name: string;
     email: string;
-    comment: string;
+    content: string;
+    article_comment: Number;
 }
 
 export const useCommentStore = defineStore("comment", {

@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="coment-text">
-                    <textarea v-model="userComments" name="comment" id="comment" title="" class=" " cols="5" rows="10" placeholder="متن پیام"></textarea>
+                    <textarea v-model="userComments" name="content" id="content" title="" class=" " cols="5" rows="10" placeholder="متن پیام"></textarea>
                 </div>
                 <div class="comment-btn">
                     <button  class=" subscribe">ثبت نظر</button>
@@ -37,6 +37,7 @@ const userName = ref('');
 const userEmail = ref('');
 const userComments = ref('');
 const errorMessage = ref('')
+const route = useRoute();
 
 
 function submitComment(){
@@ -53,9 +54,10 @@ function submitComment(){
     if(errorMessage.value.length == 0){
         errorMessage.value = ''
         const form = reactive({
-          comment: userComments,
+          content: userComments,
           name: userName, 
           email: userEmail,
+          article_comment: route.params.id
         });
         
         commentStore.storeComment({ ...form })

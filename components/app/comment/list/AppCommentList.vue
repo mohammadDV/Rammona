@@ -22,8 +22,11 @@
             white-space: break-spaces;
           "
         >
-          {{ item.comment }}
+          {{ item.content }}
         </div>
+        </td>
+        <td>
+          {{ item.article_comment }}
         </td>
         <td class="date">
           {{ item.date ? toDate(item.date) : '' }}
@@ -52,6 +55,7 @@
     "name",
     "email",
     "comment",
+    "article_comment",
     "date",
     "action",
   ];

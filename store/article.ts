@@ -5,6 +5,7 @@ import { ArticleModel} from "~~/types";
 
 interface ArticleForm {
     title: string;
+    summary: string;
     content: string;
     type: string;
     file: Blob | null;

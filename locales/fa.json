@@ -187,7 +187,8 @@
         "type": "نوع",
         "summary": "خلاصه",
         "name": "نام",
-        "comment": "پیام"
+        "comment": "پیام",
+        "article_comment": "شماره مقاله"
     },
     "action": {
         "submit": "ثبت",
