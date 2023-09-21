@@ -83,8 +83,8 @@ export const useArticleStore = defineStore("article", {
                 }>(`article/article_detail/${route.params.id}`, {
                     method: "GET",
                 });
-                this.article = res.article;
-                return res.article;
+                this.article = res;
+                return res;
             } catch (e) {
                 throw e;
             }
