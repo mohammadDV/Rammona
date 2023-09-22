@@ -23,7 +23,7 @@ export const useCommentStore = defineStore("comment", {
                     data: CommentModel[];
                     count: number;
                 }>(
-                    "article/comment_list/",
+                    `article/comment_list/${route.params.id}/`,
                     {
                         method: "GET",
                     },

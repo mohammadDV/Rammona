@@ -188,6 +188,7 @@
         "summary": "خلاصه",
         "name": "نام",
         "comment": "پیام",
+        "view": "بازدید",
         "article_comment": "شماره مقاله"
     },
     "action": {

@@ -26,12 +26,12 @@
         </div>
         </td>
         <td>
-          {{ item.article_comment }}
+          {{ item.article }}
         </td>
         <td class="date">
           {{ item.date ? toDate(item.date) : '' }}
         </td>
-        <td>
+        <!-- <td>
           <BulmaBtn
             color="danger"
             :title="$t('action.delete')"
@@ -39,7 +39,7 @@
           >
             <ThemeIcon color="white">delete</ThemeIcon>
           </BulmaBtn>
-        </td>
+        </td> -->
       </tr>
     </BulmaTable>
     <slot />
@@ -57,7 +57,7 @@
     "comment",
     "article_comment",
     "date",
-    "action",
+    // "action",
   ];
   //
   interface Props {

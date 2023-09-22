@@ -29,10 +29,18 @@
           <ThemeIcon v-else size="30px" color="red">empty</ThemeIcon>
         </td>
         <td>{{ item.type }}</td>
+        <td>{{ item.article_view }}</td>
         <td class="date">
           {{ item.update_date ? toDate(item.update_date) : toDate(item.create_date) }}
         </td>
         <td>
+          <BulmaBtn class="ml-2"
+            color="info"
+            :to="`/admin/comment/${item.id}`"
+            :title="$t('apps.comment_list')"
+          >
+            <ThemeIcon color="white">map</ThemeIcon>
+          </BulmaBtn>
           <BulmaBtn class="ml-2"
             color="success"
             :to="`/admin/article/${item.id}`"
@@ -64,6 +72,7 @@
     "summary",
     "file",
     "type",
+    "view",
     "date",
     "action",
   ];

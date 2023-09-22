@@ -102,7 +102,6 @@ const sidebarItems = computed<Item[]>(() => [
     isAllowed: true,
     child: [
       { name: "action.list", link: "/admin/article" },
-      { name: "apps.comment_list", link: "/admin/comment" }
     ],
   },
   {
