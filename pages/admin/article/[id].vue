@@ -88,11 +88,9 @@
 </style>
 
 <script setup lang="ts">
-import { useAuthStore } from "~~/store/auth";
 import { useArticleStore } from "~~/store/article";
 import ContentEditor from "../../../components/bulma/editors/ContentEditor.vue"
 const articleStore = useArticleStore();
-const authStore = useAuthStore();
 const route = useRoute();
 const loading = ref(true);
 

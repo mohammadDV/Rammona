@@ -80,7 +80,7 @@ export const useArticleStore = defineStore("article", {
                 const res = await apiFetch<{
                     article: ArticleModel;
                     type: any;
-                }>(`article/article_detail/${route.params.id}`, {
+                }>(`article/article_detail/${route.params.id}/`, {
                     method: "GET",
                 });
                 this.article = res;
@@ -120,9 +120,9 @@ export const useArticleStore = defineStore("article", {
                 }
                 const formData = createFormdata(payload);
                 const res = await apiFetch<ArticleModel[]>(
-                    `article/edit_article/${id}`,
+                    `article/edit_article/${id}/`,
                     {
-                        method: "POST",
+                        method: "PATCH",
                         body: formData,
                     }
                 );
@@ -137,7 +137,7 @@ export const useArticleStore = defineStore("article", {
             const { createFormdata } = useFunctions();
             try {
                 const res = await apiFetch<ArticleModel[]>(
-                    `article/remove_article/${id}`,
+                    `article/remove_article/${id}/`,
                     {
                         method: "GET",
                     }

@@ -48,20 +48,6 @@ useHead({ title: "پیام" });
            name: userName, 
            email: userEmail,
          });
-
-         
-         
-        //  commentStore.storeComment({ ...form })
-        //      .then(() => {
-        //          successMessage.value = 'نظر شما با موفقیت ثبت شد.';
-        //      })
-        //      .finally(() => {
-        //          userName.value = '';
-        //          userEmail.value = '';
-        //          userComments.value = '';
-        //      });
- 
- 
  
  function submitComment(){
      if (userComments.value.length < 5) {
@@ -78,8 +64,6 @@ useHead({ title: "پیام" });
          errorMessage.value = ''
          
  
- 
-     
       setTimeout(() => {
            successMessage.value = '';
          }, 3000);

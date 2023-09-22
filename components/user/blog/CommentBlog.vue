@@ -57,7 +57,7 @@ function submitComment(){
           content: userComments,
           name: userName, 
           email: userEmail,
-          article_comment: route.params.id
+          article: route.params.id
         });
         
         commentStore.storeComment({ ...form })

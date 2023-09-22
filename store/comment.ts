@@ -44,7 +44,7 @@ export const useCommentStore = defineStore("comment", {
                 const res = await apiFetch<{
                     comment: CommentModel;
                     type: any;
-                }>(`article/comment_detail/${route.params.id}`, {
+                }>(`article/comment_detail/${route.params.id}/`, {
                     method: "GET",
                 });
                 this.comment = res.comment;
@@ -75,7 +75,7 @@ export const useCommentStore = defineStore("comment", {
             const { successToast } = useToastNotif();
             try {
                 const res = await apiFetch<CommentModel[]>(
-                    `article/remove_comment/${id}`,
+                    `article/remove_comment/${id}/`,
                     {
                         method: "GET",
                     }
